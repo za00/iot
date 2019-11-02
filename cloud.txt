@@ -1,0 +1,11 @@
+
+#import Adafruit_DHT as ad
+from urllib.request import urlopen
+import time
+while True:
+	#humidity,temp=ad.read_retry(11,4)
+    temp,humidity=140,350
+    print(temp,humidity)
+    conn = urlopen('https://api.thingspeak.com/update?api_key=LKMCFNKHPZGYMM41&field1=%s&field2=%s'%(temp, humidity))
+    time.sleep(3)
+    conn.close()
